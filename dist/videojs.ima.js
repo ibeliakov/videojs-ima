@@ -167,9 +167,15 @@ PlayerWrapper.prototype.setUpPlayerIntervals = function () {
 /**
  * Updates the current time of the video
  */
-PlayerWrapper.prototype.updateCurrentTime = function () {
+/* PlayerWrapper.prototype.updateCurrentTime = function() {
   if (!this.contentPlayheadTracker.seeking) {
     this.contentPlayheadTracker.currentTime = this.vjsPlayer.currentTime();
+  }
+}; */
+
+PlayerWrapper.prototype.updateCurrentTime = function () {
+  if (!this.contentPlayheadTracker.seeking && !this.vjsPlayer.paused()) {
+    this.contentPlayheadTracker.currentTime++;
   }
 };
 
